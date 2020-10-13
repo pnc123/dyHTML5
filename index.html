@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dynamic Web Page</title>
+
+	<link rel="stylesheet" type="text/css" href="css.css">
+
+	<style type="text/css">
+		body{
+			margin: 0px;
+			background-image: url("back.jpg");
+			background-size: cover;
+		}	
+
+		.main{
+			min-height: 600px;
+			width: 80%;
+			background-color: #0066ff;
+			margin: auto;
+			opacity: .97;
+		}
+
+		nav{
+			width: 100%;
+			height: 80px;
+			background-color: #00ff00;
+			text-align: center;
+		}
+
+		.tb{
+			width: 800px;
+			margin: auto;
+			text-align: center;
+		}
+
+		.table{
+			margin-top: 10px;
+		}
+
+		.tb th{
+			background-color: #339933;
+			color: white;
+		}
+
+		.tb th,.tb td{
+			padding: 12px 5px;
+		}
+
+		.tb tr:nth-child(odd){
+			background-color:#99ff99; 
+		}
+
+		.tb tr:nth-child(even){
+			background-color:#ccffff; 
+		}
+
+		.foot{
+			text-align: center;
+		}
+
+		.form{
+			color: black;
+			margin-top: 15px;
+			padding-left: 15px;
+			margin: auto;
+		}
+
+		input{
+			border-radius: 10px;
+			text-align: center;
+			background-color: #cc9900
+;
+		}
+
+		.btn{
+			width: 150px;
+			height: 30px;
+			background-color: green;
+			border-radius: 5px;
+			border:1px solid grey;
+			box-shadow: beige;
+		}
+
+		.delbtn{
+			width: 150px;
+			height: 30px;
+			background-color: red;
+			border-radius: 5px;
+			border:1px solid grey;
+			box-shadow: beige;
+		}
+
+
+	</style>
+
+</head>
+<body>
+	<div class="main">
+		<div class="head">
+			<nav>
+				<h1>Dynamic Table and Form</h1>
+				<h2>Book Store</h2>
+			</nav>
+		</div>
+		<div class="mid">
+			<center><div class="form"><br>
+				Book Name: <input type="text" name="" id="name" placeholder="Book Name">
+				Author Name: <input type="text" name="" id="author" placeholder="Author Name">
+				Quantity: <input type="text" name="" id="quantity" placeholder="Quantity">
+				Price: <input type="text" name="" id="del" placeholder="Price"><br><br>
+				<input type="button" name="" value="Add Row" onclick="add()" class="btn">
+				<input type="button" name="" value="Delete Row" onclick="del()" class="delbtn">
+			</div>
+		</center>
+		<hr>
+			<div class="table">
+				<table style="border-collapse: collapse;" border="1px solid black" class="tb" id="books">
+					<tr>
+						<th>Book Name</th>
+						<th>Author</th>
+						<th>Quantity</th>
+						<th>Price</th>
+						<th>Delete</th>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			function add(){
+				var tb1=document.getElementById('books');
+				var newrow = tb1.insertRow();
+				var bookname = newrow.insertCell();
+				var author = newrow.insertCell();
+				var quantity = newrow.insertCell();
+				var del = newrow.insertCell();
+				var btn=newrow.insertCell();
+
+				bookname.innerHTML=document.getElementById('name').value;
+				author.innerHTML=document.getElementById('author').value;
+				quantity.innerHTML=document.getElementById('quantity').value;
+				del.innerHTML=document.getElementById('del').value;
+				btn.innerHTML="<input type='button' value='Delete' onclick='delr("+tb1.rows.length+")' class='delbtn'>";
+			}
+
+			function del(){
+				var tb1=document.getElementById('books');
+				tb1.deleteRow(1);
+			}
+
+			function delr(rownum){
+				var tb1=document.getElementById('books');
+				tb1.deleteRow(rownum);
+			}
+		</script>
+
+
+		<div class="foot">
+			<p>Copyright@praveen.com</p>
+		</div>
+	</div>
+</body>
+</html>
